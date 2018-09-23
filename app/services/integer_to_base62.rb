@@ -45,6 +45,16 @@ class IntegerToBase62
 
   def minimum_power_needed_to_describe_value_in_base62(value)
     current_power = 0
+    #as long as the value passed in is greater or equal to
+    #the (current_power + 1)'s value, we'll need one higher
+    #power to be able to describe the number in the new base
+    #e.g., if the value passed in is 62,
+    #this can't be described in 1 digit (0th power represents the 1st digit)
+    #as the first digit can only hold 61 values.
+    #so we need to set the current_power to 1 (1th power represents the 2nd digit)
+    #at which point, because two places can represent up to 62**2 - 1 values, this
+    #is a sufficient amount of digit places to be able to proceed with the next step
+    #of describing our number in a base-62 format
     while(value >= 62**(current_power+1)) do
       current_power +=1
     end
