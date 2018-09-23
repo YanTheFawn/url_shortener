@@ -1,7 +1,7 @@
 class UrlShortener
   def self.call(url)
-    url_id = Link.create(url: url).id
+    id = Link.find_by_url(url).id
 
-    IntegerToBase62.call(url_id)
+    IntegerToBase62.call(id)
   end
 end

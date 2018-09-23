@@ -5,6 +5,7 @@ ruby '2.3.1'
 
 group :test do
   gem 'rspec-rails', '~> 3.8'
+  gem 'pry'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
