@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_192650) do
 
   create_table "links", force: :cascade do |t|
     t.text "url"
+    t.text "shortened_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
