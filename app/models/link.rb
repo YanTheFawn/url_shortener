@@ -5,11 +5,19 @@ class Link < ApplicationRecord
   PROTOCOL = "https://".freeze
   DOMAIN_NAME = "mysite.com"
 
-  private
+  def self.most_popular
+    Link.order(access_count: :desc).limit(100).pluck(:url)
+  end
+
+  def self.url_prefix
+    "#{PROTOCOL}#{DOMAIN_NAME}/"
+  end
 
   def shortened_url
-    "#{PROTOCOL}#{DOMAIN_NAME}/#{super}"
+    "#{self.class.url_prefix}#{super}"
   end
+
+  private
 
   def set_shortened_url
     self.update_attributes(shortened_url: UrlShortener.call(self.id))
