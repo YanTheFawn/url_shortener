@@ -5,7 +5,7 @@ class Link < ApplicationRecord
 
 
   PROTOCOL = "https://".freeze
-  DOMAIN_NAME = "mysite.com"
+  DOMAIN_NAME = ENV['DOMAIN_NAME']
 
   def self.most_popular
     order(access_count: :desc).limit(100).map {|link| { url: link.url, access_count: link.access_count}}
