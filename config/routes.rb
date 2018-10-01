@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
     namespace :api do
       namespace :v1 do
-        resources :links, only: [:create, :show], param: :shortened_url
         get 'links/most_popular', to: 'links#most_popular'
+        resources :links, only: [:create, :show], param: :shortened_url
       end
     end
 end
