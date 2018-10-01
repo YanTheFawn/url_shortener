@@ -1,6 +1,6 @@
 module API::V1
   class LinksController < ApplicationController
-    before_action :format_url
+    before_action :format_url, only: [:show]
 
     def show
       link = Link.find_by_shortened_url!(shortened_url_from_params)
