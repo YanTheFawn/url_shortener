@@ -1,5 +1,7 @@
 module API::V1
   class LinksController < ApplicationController
+    before_action :format_url
+
     def show
       link = Link.find_by_shortened_url!(shortened_url_from_params)
       link.increment!(:access_count)
@@ -25,12 +27,16 @@ module API::V1
 
     private
 
+    def format_url
+      params[:link][:url] = params[:link][:url].strip
+    end
+
     def link_params
       params.require(:link).permit(:url)
     end
 
     def shortened_url_from_params
-      params[:shortened_url].gsub(Link.url_prefix, "")
+      params[:shortened_url].gsub(Link.url_prefix, "").strip
     end
   end
 end

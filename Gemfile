@@ -5,14 +5,19 @@ ruby "2.4.4"
 
 group :test do
   gem 'rspec-rails', '~> 3.8'
-  gem 'pry'
   gem 'shoulda'
 end
 
+group :test, :development do
+  gem 'pry'
+end
+
+gem 'redis'
 gem 'faker'
 gem 'active_model_serializers'
 gem 'httparty'
 gem 'sidekiq'
+gem 'sinatra', github: 'sinatra/sinatra'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
