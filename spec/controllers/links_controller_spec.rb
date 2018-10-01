@@ -23,6 +23,16 @@ describe API::V1::LinksController do
 
       expect(json_response).to eq(shortened_url: expected_response)
     end
+
+    it 'enqueues a background job to scrape the site title' do
+      allow(SiteScraperJob).to receive(:perform_later)
+
+      post :create, params: { link: { url: 'www.testing.com' }}
+
+      link = Link.find_by_url('www.testing.com')
+
+      expect(SiteScraperJob).to have_received(:perform_later).with({link_id: link.id})
+    end
   end
 
   describe '#most_popular' do

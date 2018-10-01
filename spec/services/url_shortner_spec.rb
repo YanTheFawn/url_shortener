@@ -12,7 +12,6 @@ describe 'UrlShortener' do
    expect(shortened_href).to eq('100b')
  end
 
-
  it "never exceeds 6 characters when shorting the url" do
    url = "www.myurl.com"
    Link.create(url: url)

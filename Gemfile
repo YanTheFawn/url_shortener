@@ -9,7 +9,13 @@ group :test do
   gem 'shoulda'
 end
 
+group :test, :development do
+  gem 'faker'
+end
+
 gem 'active_model_serializers'
+gem 'httparty'
+gem 'sidekiq'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

@@ -11,6 +11,8 @@ module API::V1
       link = Link.new(link_params)
 
       if link.save
+        SiteScraperJob.perform_later({link_id: link.id})
+
         render json: link, status: :ok
       else
         render link.errors.full_messages, status: 400
