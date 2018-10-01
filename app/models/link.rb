@@ -15,8 +15,8 @@ class Link < ApplicationRecord
     "#{PROTOCOL}#{DOMAIN_NAME}/"
   end
 
-  def shortened_url
-    "#{self.class.url_prefix}#{super}"
+  def display_shortened_url
+    "#{self.class.url_prefix}#{shortened_url}"
   end
 
   private

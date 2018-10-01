@@ -1,9 +1,9 @@
 module API::V1
   class LinksController < ApplicationController
-    before_action :format_url, only: [:show]
+    before_action :format_url, only: [:create]
 
     def show
-      link = Link.find_by_shortened_url!(shortened_url_from_params)
+      link = Link.find_by_shortened_url!(params[:shortened_url])
       link.increment!(:access_count)
 
       redirect_to link.url
@@ -33,10 +33,6 @@ module API::V1
 
     def link_params
       params.require(:link).permit(:url)
-    end
-
-    def shortened_url_from_params
-      params[:shortened_url].gsub(Link.url_prefix, "").strip
     end
   end
 end
