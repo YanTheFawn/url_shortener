@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_09_30_203109) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "links", force: :cascade do |t|
     t.text "url"
     t.text "shortened_url"
