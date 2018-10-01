@@ -9,10 +9,7 @@ group :test do
   gem 'shoulda'
 end
 
-group :test, :development do
-  gem 'faker'
-end
-
+gem 'faker'
 gem 'active_model_serializers'
 gem 'httparty'
 gem 'sidekiq'
