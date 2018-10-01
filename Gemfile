@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.1'
+ruby "2.4.4"
 
 group :test do
   gem 'rspec-rails', '~> 3.8'
