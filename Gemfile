@@ -7,6 +7,8 @@ group :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'shoulda'
 end
+gem 'rack-cors', require: 'rack/cors'
+
 
 group :test, :development do
   gem 'pry'
